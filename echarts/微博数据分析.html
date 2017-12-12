@@ -1,0 +1,765 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SNS内容安全监测系统" />
+    <meta name="author" content="川" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Free Responsive Photography Template</title>
+	<script src="assets/js/jquery-3.2.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/echarts.min.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script src="assets/js/bootstrap-table.js"></script>
+	<script src="assets/js/bootstrap-table-export.js"></script>
+	<script src="assets/js/tableExport.js"></script>
+	<script type="text/javascript" src="assets/js/scroll.js"></script>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/bootstrap-table.css" rel="stylesheet" />
+</head>
+<body style="background:#1B1B1B">
+  <div id="header" >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-4 logo-div"  >
+               <div class="logo-inner">
+                   <div class="logo-name">
+                   <a href="index.html"  >
+ <span > SNS内容安全监测系统 </span>
+                   <small >SNS content security monitoring system</small>
+                       </a>
+                       </div>
+                   <br />
+                   <div class="links-home">
+                        <a href="实时监测.html"  >实时监测  /</a>
+                    <a href="微博数据分析.html"  >微博数据分析 /</a>
+                    <a href="知乎数据分析.html" >知乎数据分析 /</a>
+                   <a href="数据分析图片.html"  >数据分析图片 </a>
+                   </div>
+                  
+               </div>
+
+           </div>
+           <div class="col-md-8 header-text-top " >
+           
+微博数据分析模块根据实时监测模块获取的含有敏感信息的微博，进一步综合分析判定敏感微博是否威胁国家安全与网络社会环境，指出敏感用户是否为水军用户，对这些用户发出预警。
+           <br />Weibo data analysis module based on real-time monitoring module for weibo containing sensitive information, further comprehensive analysis determine whether the sensitive weibo threat to national security and social environment, sensitive points out whether the user as the user water-forces, issued a warning to the users.
+
+		   
+		   </div>
+       </div>
+   </div>
+    </div>   
+    <!--END HEADER SECTION-->
+
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column" style="color:#999">
+			<h3>
+				&nbsp;&nbsp;微博数据分析
+			</h3>
+		</div>
+	</div>
+</div>
+
+
+	
+	
+<div class="container">
+	<div class="table">
+		<div class="col-md-12 column">
+				<div id="content">
+						<div id="content-body">
+			
+				<div id="reportTableDiv" class="span10">
+				<table id="reportTable">
+				</table>
+				</div>
+				</div>
+				</div>
+		
+		
+			<script type="text/javascript">
+		var Data1 = [{"user_id":"2919565921","user_author":"-Liu爱秋","user_location":"烟台","user_time":"2017-05-27 16:36:30","user_content":"好久没有更博了，就发张过敏PS的照片吧[二哈]"},{"user_id":"2113930241","user_author":"旷野星辰188","user_location":"潍坊","user_time":"2017-05-27 16:31:49","user_content":"我围观了@唯我落日 的回答，该问题价值50.00元，围观仅1元，快来一起围观~ http://t.cn/RiJMXJr"}];
+		$(function () {
+			$('#reportTable').bootstrapTable({
+				method: 'get',
+				cache: true,      //设置为 false 禁用 AJAX 数据缓存
+				height: 800,
+				striped: false,   //设置为 true 会有隔行变色效果
+				pagination: true, //设置为 true 会在表格底部显示分页条
+				pageSize: 20,     //如果设置了分页，页面数据条数
+				pageNumber:1,    //如果设置了分页，首页页码
+				pageList: [ 20, 50, 100, 200],  //如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
+				search: true,
+				showColumns: true,   //是否显示 内容列下拉框
+				showRefresh: true,   //是否显示 刷新按钮
+				showExport: true,
+				exportTypes: ['csv','txt','xml'],
+				search: true,
+				clickToSelect: true,  //设置true 将在点击行时，自动选择rediobox 和 checkbox
+				columns: [{field:"user_id",title:"id",align:"center",valign:"middle",sortable:"true"},{field:"user_author",title:"author",align:"center",valign:"middle",sortable:"true"},{field:"user_location",title:"location",align:"center",valign:"middle",sortable:"true"},{field:"user_time",title:"time",align:"center",valign:"middle",sortable:"true"},{field:"user_content",title:"content",align:"center",valign:"middle",sortable:"true"}],
+				data : Data1,
+				onPageChange: function (size, number) {
+                },
+                formatNoMatches: function(){
+                	return '无符合条件的记录';
+                }
+			});
+								
+			$(window).resize(function () {
+				$('#reportTable').bootstrapTable('resetView');
+			});
+		});
+		
+	</script>
+		
+		</div>
+	</div>
+</div>	
+	
+	<script>
+	var id1= "法国培根";
+	var author1= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location1= "法国培根";
+	var time1= "法国培根";
+	var content1= "法国培根";
+	var id2= "法国培根";
+	var author2= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location2= "法国培根";
+	var time2= "法国培根";
+	var content2= "法国培根";
+	var id3= "法国培根";
+	var author3= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location3= "法国培根";
+	var time3= "法国培根";
+	var content3= "法国培根";
+	var id4= "法国培根";
+	var author4= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location4= "法国培根";
+	var time4= "法国培根";
+	var content4= "法国培根";
+	var id5= "法国培根";
+	var author5= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location5= "法国培根";
+	var time5= "法国培根";
+	var content5= "法国培根";
+
+	
+	
+	
+	</script>
+	
+	
+	
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 style="color:#999">
+				敏感微博
+			</h3>
+			<table class="table">
+				<thead>
+					<tr style="color:#999">
+						<th>
+							id
+						</th>
+						<th>
+							author
+						</th>
+						<th>
+							location 
+						</th>
+						<th>
+							time
+						</th>
+						<th>
+							content
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr bgcolor="FF8000";>
+						<td>
+							<script>document.write(id1);</script>
+						</td>
+						<td>
+							<script>document.write(author1);</script>
+						</td>
+						<td>
+							<script>document.write(location1);</script>
+						</td>
+						<td>
+							<script>document.write(time1);</script>
+						</td>
+						<td>
+							<script>document.write(content1);</script>
+						</td>
+					</tr>
+					<tr bgcolor="FF8000";>
+						<td>
+							<script>document.write(id2);</script>
+						</td>
+						<td>
+							<script>document.write(author2);</script>
+						</td>
+						<td>
+							<script>document.write(location2);</script>
+						</td>
+						<td>
+							<script>document.write(time2);</script>
+						</td>
+						<td>
+							<script>document.write(content2);</script>
+						</td>
+					</tr>
+					<tr bgcolor="FF8000";>
+						<td>
+							<script>document.write(id3);</script>
+						</td>
+						<td>
+							<script>document.write(author3);</script>
+						</td>
+						<td>
+							<script>document.write(location3);</script>
+						</td>
+						<td>
+							<script>document.write(time3);</script>
+						</td>
+						<td>
+							<script>document.write(content3);</script>
+						</td>
+					</tr>
+					<tr bgcolor="FF8000";>
+						<td>
+							<script>document.write(id4);</script>
+						</td>
+						<td>
+							<script>document.write(author4);</script>
+						</td>
+						<td>
+							<script>document.write(location4);</script>
+						</td>
+						<td>
+							<script>document.write(time4);</script>
+						</td>
+						<td>
+							<script>document.write(content4);</script>
+						</td>
+					</tr>
+					<tr bgcolor="FF8000";>
+						<td>
+							<script>document.write(id4);</script>
+						</td>
+						<td>
+							<script>document.write(author4);</script>
+						</td>
+						<td>
+							<script>document.write(location4);</script>
+						</td>
+						<td>
+							<script>document.write(time4);</script>
+						</td>
+						<td>
+							<script>document.write(content4);</script>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+	
+	
+	
+	<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+			 <a id="modal-732034" href="#modal-container-732034" role="button" class="btn" data-toggle="modal" style="color:#999">微博关系图</a>
+			
+			<div class="modal fade" id="modal-container-732034" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								微博关系图
+							</h4>
+						</div>
+						<div class="modal-body">
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 550px;height:550px;"></div>
+     <script type="text/javascript">
+	var data1 = [        {  
+            "name": "淤然丫头",//关系网名称  
+            "keyword": {},  
+            "base": "淤然丫头"  
+        }  ,
+		        {  
+            "name": "momokome明远善",//关系网名称  
+            "keyword": {},  
+            "base": "momokome明远善"  
+        },
+				        {  
+            "name": "二次元桃偃",//关系网名称  
+            "keyword": {},  
+            "base": "二次元桃偃"  
+        }
+		
+		];
+	var data2 = [        {  
+            "name": "淤然丫头",//节点名称  
+            "value": 100, 
+            "category": 0//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "李新忠MTNS",  
+              "value": 10, 
+            "category": 0  
+        },  
+        {  
+            "name": "幻想曲2010",  
+            "value": 10, 
+            "category": 0  
+        },
+		        {  
+            "name": "小兽201409",  
+            "value": 15, 
+            "category": 0  
+        },
+		        {  
+            "name": "少年朕要淡定",  
+            "value": 10, 
+            "category": 0  
+        },
+		        {  
+            "name": "90后的晓庆6666688",  
+            "value": 100, 
+            "category": 0  
+        },
+		        {  
+            "name": "姑姑是过儿啊",  
+            "value": 17, 
+            "category": 0  
+        },
+				        {  
+            "name": "kaloo1981_392",  
+            "value": 21, 
+            "category": 0  
+        },
+				        {  
+            "name": "某某hom",  
+            "value": 54, 
+            "category": 0  
+        },
+				        {  
+            "name": "优位停车车牌识别",  
+            "value": 20, 
+            "category": 0  
+        },
+		{
+		    "name": "犀利哥呼延叔盛胞鞠",  
+            "value": 60, 
+            "category": 0  
+        },{  
+            "name": "momokome明远善",//节点名称  
+            "value": 100, 
+            "category": 1//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "朿竹2012",  
+              "value": 42, 
+            "category": 1  
+        },  
+        {  
+            "name": "世界里的祺365",  
+            "value": 20, 
+            "category": 1  
+        },
+		        {  
+            "name": "璐非露201606",  
+            "value": 32 ,
+            "category": 1  
+        },
+		        {  
+            "name": "嘎哈GAHA",  
+            "value": 15, 
+            "category": 1  
+        },
+		        {  
+            "name": "被占据的幸福201607",  
+            "value":10,
+            "category": 1  
+        },
+		        {  
+            "name": "TR0Y1994",  
+            "value": 54, 
+            "category": 1  
+        },
+				        {  
+            "name": "雅思GRE托福GMAT网络课程团购",  
+            "value": 47, 
+            "category": 1 
+        },
+				        {  
+            "name": "赠友人三首918",  
+            "value": 45, 
+            "category": 1 
+        },
+				        {  
+            "name": "lllllyz哲",  
+            "value": 20, 
+            "category": 1  
+        },
+		{
+		    "name": "ACGS漫展策划官博",  
+            "value": 12, 
+            "category": 1  
+        },{  
+            "name": "二次元桃偃",//节点名称  
+            "value": 100, 
+            "category": 2//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "Leslie和爱吃面的铃铛",  
+              "value": 42, 
+            "category": 2  
+        },  
+        {  
+            "name": "Bowllo_",  
+            "value": 35, 
+            "category": 2  
+        },
+		        {  
+            "name": "北海迷路青年旅舍",  
+            "value": 37, 
+            "category": 2  
+        },
+		        {  
+            "name": "鵬_SAMA",  
+            "value": 50, 
+            "category": 2  
+        },
+		        {  
+            "name": "面面夏呀",  
+            "value": 70, 
+            "category": 2  
+        },
+		        {  
+            "name": "烟檯无痕接发",  
+            "value": 15, 
+            "category": 2  
+        },
+				        {  
+            "name": "Amseram",  
+            "value": 21, 
+            "category": 2
+        },
+				        {  
+            "name": "金牌护肤导师筱雨",  
+            "value": 10, 
+            "category": 2 
+        },
+				        {  
+            "name": "住二楼的小仙女丹姐姐",  
+            "value": 20, 
+            "category": 2  
+        },
+		{
+		    "name": "Maybe201003",  
+            "value": 20, 
+            "category": 2  
+        }];	
+	var data3 = [        {  
+            "source": 0,//起始节点，0表示第一个节点  
+            "target": 1 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 0,  
+            "target": 2  
+        },
+		        {  
+            "source": 0,
+            "target": 3 
+        }, 
+		        {  
+            "source": 0,  
+            "target": 4  
+        },		        {  
+            "source": 0,
+            "target": 5 
+        }, 		        {  
+            "source": 0,
+            "target": 6 
+        }, 		        {  
+            "source": 0,
+            "target": 7 
+        }, 		        {  
+            "source": 0,
+            "target": 8 
+        }, 		        {  
+            "source": 0,
+            "target": 9 
+        },{  
+            "source": 0,
+            "target": 10 
+        },	{  
+            "source": 11,//起始节点，0表示第一个节点  
+            "target": 12 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 11,  
+            "target": 13  
+        },
+		        {  
+            "source": 11,
+            "target": 14 
+        }, 
+		        {  
+            "source": 11,  
+            "target": 15  
+        },		        {  
+            "source": 11,
+            "target": 16 
+        }, 		        {  
+            "source": 11,
+            "target": 17 
+        }, 		        {  
+            "source": 11,
+            "target": 18 
+        }, 		        {  
+            "source": 11,
+            "target": 19 
+        }, 		        {  
+            "source": 11,
+            "target": 20 
+        },{  
+            "source": 11,
+            "target": 21 
+        },{  
+            "source": 22,//起始节点，0表示第一个节点  
+            "target": 23 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 22,  
+            "target": 24  
+        },
+		        {  
+            "source": 22,
+            "target": 25 
+        }, 
+		        {  
+            "source": 22,  
+            "target": 26  
+        },		        {  
+            "source": 22,
+            "target": 27
+        }, 		        {  
+            "source": 22,
+            "target": 28 
+        }, 		        {  
+            "source": 22,
+            "target": 29 
+        }, 		        {  
+            "source": 22,
+            "target": 30 
+        }, 		        {  
+            "source": 22,
+            "target": 31 
+        }];
+		var data4 = ['淤然丫头','momokome明远善','二次元桃偃']
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+		myChart.showLoading();
+		var webkitDep = {  
+    "type": "force",  
+    "categories": data1,  
+    "nodes": data2,  
+	"links": data3
+};  
+		myChart.hideLoading();
+        // 指定图表的配置项和数据
+        var option = {
+        legend: {  
+            data: data4//此处的数据必须和关系网类别中name相对应 
+				
+        },  
+        series: [{  
+            type: 'graph',  
+            layout: 'circular', 
+			                circular: {
+                    rotateLabel: true
+                },
+            animation: false,
+			roam: true,
+            label: {  
+                normal: {  
+                    show:true,  
+                    position: 'right'  
+                }  
+            },  
+			                lineStyle: {
+                    normal: {
+                        color: 'source',
+                        curveness: 0.3
+                    }
+                },
+            draggable: true,  
+            data: webkitDep.nodes.map(function (node, idx) {  
+                node.id = idx; 
+				node.symbolSize /= 2;
+				node.symbolSize = node.value;
+				node.label = { normal: {
+									show: node.symbolSize >0
+									}};
+                return node;  
+            }),  
+            categories: webkitDep.categories,  
+
+            edges: webkitDep.links  
+        }]  
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+						<div class="col-md-4 column">
+					 <a id="modal-958791" href="#modal-container-958791" role="button" class="btn" data-toggle="modal">重点省市微博监测量及敏感微博量</a>
+					
+					<div class="modal fade" id="modal-container-958791" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title" id="myModalLabel">
+										重点省市微博监测量及敏感微博量
+									</h4>
+								</div>
+								<div class="modal-body">
+								    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main2" style="width: 550px;height:550px;"></div>
+										    <script type="text/javascript">
+	
+	var data1 = ['山西','山东','河南','河北','湖南','湖北','广东','广西','安徽','福建','北京','上海'];
+	var data2 = [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3];
+	var data3 = [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3];
+	var data4 = [                    {name : '最高', value : 182.2, xAxis: 7, yAxis: 183},
+                    {name : '最低', value : 2.3, xAxis: 11, yAxis: 3}];
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+		myChart.showLoading();
+		myChart.hideLoading();
+        // 指定图表的配置项和数据
+option = {
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['微博量','敏感量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : data1
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'微博量',
+            type:'bar',
+            data:data2,
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '各省平均值'}
+                ]
+            }
+        },
+        {
+            name:'敏感量',
+            type:'bar',
+            data:data3,
+            markPoint : {
+                data : data4
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name : '各省平均值'}
+                ]
+            }
+        }
+    ]
+};
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+										
+								</div>
+								<div class="modal-footer">
+									 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+		
+	
+	</div>
+</div>
+	
+	
+
+
+    <div class="footer-sec"  >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-12 foo-inner" >
+<script>document.write(time1);</script>
+           </div>
+           </div>
+       </div>
+         </div>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>登录界面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="description" content="SNS内容安全监测系统" />
+		<meta name="author" content="川" />
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/supersized.css">
+        <link rel="stylesheet" href="assets/css/style2.css">
+		<!-- Javascript -->
+        <script src="assets/js/jquery-1.8.2.min.js"></script>
+        <script src="assets/js/supersized.3.2.7.min.js"></script>
+        <script src="assets/js/supersized-init.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <h1>Login</h1>
+			<script>
+				function jump()
+				{
+					window.location.href="实时监测.html";
+				}
+			</script>
+            <form action="" method="post">
+                <input type="text" name="username" class="username" placeholder="Username">
+                <input type="password" name="password" class="password" placeholder="Password">
+                <button type="submit" onclick="jump()">Sign me in</button>
+                <div class="error"><span>+</span></div>
+            </form>
+        </div>
+
+    </body>
+
+</html>
+

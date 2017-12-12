@@ -1,0 +1,207 @@
+﻿
+
+
+/* =============================================================
+   领袖意见 STYLES
+ ============================================================ */
+
+.lingxiu{ width:1200px; border:0px solid #eee; margin:30px auto;background-color:rgba( 	30,144,255,0.1);}
+.lingxiu p span { color:#999; float:right;}
+.lingxiu1{ width:1200px; border:0px solid #eee; margin:30px auto;background-color:rgba( 	30,144,255,0.1);}
+/* =============================================================
+   滚动 STYLES
+ ============================================================ */
+
+input,button,select,textarea{outline:none;}
+ul,li,dl,ol{list-style:none;}
+a{color:#666; text-decoration:none;}
+
+.box{ width:680px; margin:0 auto;}
+.bcon{ width:650px; border:0px solid #eee; margin:30px auto;background-color:rgba( 	30,144,255,0.05);}
+
+.box1{ width:400px; margin:0 auto;}
+.bcon1{ width:400px; border:0px solid #eee; margin:30px auto;background-color:rgba( 	30,144,255,0.05);}
+
+.list_lh{ height:300px; overflow:hidden;}
+.list_lh li{ padding:10px;}
+.list_lh li p{ height:24px; line-height:24px;}
+.list_lh li p a{ float:left;}
+.list_lh li p span{ color:#999; float:right;}
+.list_lh li p a.btn_lh{ background:#28BD19; height:17px; line-height:17px; color:#fff; padding:0 5px; margin-top:4px; display:inline-block; float:right;}
+.btn_lh:hover{ color:#fff; text-decoration:none;}
+/* =============================================================
+   GENERAL STYLES
+ ============================================================ */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height:30px;
+}
+.head-line {
+    padding-top:50px;
+    font-size:40px;
+    font-weight:900;
+    padding-bottom:30px;
+}
+
+/* =============================================================
+   HEADER STYLES
+ ============================================================ */
+#header {
+    background-color: #0C739B;
+}
+
+.logo-div {
+    background-color: rgba(0, 82, 114, 0.51);
+    line-height:23px;
+}
+
+.logo-inner {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    padding: 60px 20px 50px 20px;
+    text-align: center;
+    line-height: 23px;
+}
+
+.logo-name a, .logo-name a:hover {
+    text-decoration: none;
+    color: #fff;
+    line-height:23px;
+}
+
+.logo-inner span {
+    display: block;
+}
+
+.logo-inner small {
+    font-size: 12px;
+    color: #fff;
+}
+
+.links-home a, .links-home a:hover {
+    color: rgba(147, 209, 234, 1);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.header-text-top {
+    color: #A9DEFC;
+    padding: 50px 30px 40px 30px;
+    line-height: 25px;
+}
+
+    .header-text-top a, .header-text-top a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+.copyrights{
+	text-indent:-9999px;
+	height:0;
+	line-height:0;
+	font-size:0;
+	overflow:hidden;
+}
+
+ /* =============================================================
+   INFO SECTION STYLES
+ ============================================================ */
+
+.info-sec {
+    background-color:#f2f2f2;
+    padding:20px 50px 10px 50px;
+    color:#A5A5A5;
+}
+.social-link a, .social-link a:hover {
+    text-decoration:none;
+    margin-right:10px;
+}
+
+ /* =============================================================
+   FOOTER SECTION STYLES
+ ============================================================ */
+.footer-sec {
+    background-color:#0C739B;
+     margin-top:50px;
+}
+.foo-inner {
+    text-align:right;
+    padding:20px 30px;
+    color:#fff;
+   
+}
+/*==========================================
+   GALLERY STYLES
+    =====================================================*/
+
+#port-folio {
+    padding-top: 10px;
+    min-height: 550px;
+}
+
+.portfolio-item {
+    border: 0px solid #bbb;
+    margin: 25px 5px;
+    display: inline-block;
+}
+
+.portfolio-txt {
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #0C739B;
+    text-decoration: none;
+}
+
+.portfolio-item img:hover {
+    cursor: pointer;
+    -webkit-transform: scale(.9, .9);
+    -ms-transform: scale(.9, .9);
+    transform: scale(.9, .9);
+    transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s; /* Safari */
+    z-index: 1;
+}
+
+#port-folio a:hover {
+    text-decoration: none;
+}
+/*==========================================
+   GALLERY/ PORTFOLIO FILTER STYLES
+    =====================================================*/
+ul#filters {
+    padding: 0px;
+}
+
+#filters {
+    margin: 3% 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+    #filters .active {
+        color: #000;
+    }
+
+    #filters li {
+        display: -webkit-inline-box;
+        background-color: #bbb;
+        color: #fff;
+        margin: 5px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px 15px 5px 15px;
+        cursor: pointer;
+    }
+
+
+#port-folio .portfolio-item {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    display: none;
+}

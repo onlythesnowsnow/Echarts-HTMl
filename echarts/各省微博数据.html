@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SNS内容安全监测系统" />
+    <meta name="author" content="川" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Free Responsive Photography Template</title>
+	<script src="assets/js/jquery-3.2.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script src="assets/js/echarts.min.js"></script>
+	<script src="assets/js/bootstrap-table.js"></script>
+	<script src="assets/js/bootstrap-table-export.js"></script>
+	<script src="assets/js/tableExport.js"></script>	
+	<script type="text/javascript" src="assets/js/scroll.js"></script>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/bootstrap-table.css" rel="stylesheet" />
+</head>
+<body style="background:#1B1B1B">
+  <div id="header" >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-4 logo-div"  >
+               <div class="logo-inner">
+                   <div class="logo-name">
+                   <a href="index.html"  >
+ <span > SNS内容安全监测系统 </span>
+                   <small >SNS content security monitoring system</small>
+                       </a>
+                       </div>
+                   <br />
+                   <div class="links-home">
+                        <a href="实时监测.html"  >实时监测  /</a>
+                    <a href="微博数据分析.html"  >微博数据分析 /</a>
+                    <a href="知乎数据分析.html" >知乎数据分析 /</a>
+                   <a href="数据分析图片.html"  >数据分析图片 </a>
+                   </div>
+                  
+               </div>
+
+           </div>
+           <div class="col-md-8 header-text-top " >
+              <br />
+微博数据分析模块根据实时监测模块获取的含有敏感信息的微博，进一步综合分析判定敏感微博是否威胁国家安全与网络社会环境，指出敏感用户是否为水军用户，对这些用户发出预警。
+           <br />Weibo data analysis module based on real-time monitoring module for weibo containing sensitive information, further comprehensive analysis determine whether the sensitive weibo threat to national security and social environment, sensitive points out whether the user as the user water-forces, issued a warning to the users.
+
+		   </div>
+       </div>
+   </div>
+    </div>   
+    <!--END HEADER SECTION-->
+
+	
+
+//定义敏感微博相关变量
+	<script>
+	var province = "山西省微博数据"
+	
+	var id1= "法国培根";
+	var author1= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location1= "法国培根";
+	var time1= "法国培根";
+	var content1= "法国培根";
+	var id2= "法国培根";
+	var author2= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location2= "法国培根";
+	var time2= "法国培根";
+	var content2= "法国培根";
+	var id3= "法国培根";
+	var author3= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location3= "法国培根";
+	var time3= "法国培根";
+	var content3= "法国培根";
+	var id4= "法国培根";
+	var author4= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location4= "法国培根";
+	var time4= "法国培根";
+	var content4= "法国培根";
+	var id5= "法国培根";
+	var author5= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location5= "法国培根";
+	var time5= "法国培根";
+	var content5= "法国培根";
+	
+	
+	var province = "山西省微博数据"
+	</script>
+	
+	<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column" style="color:#999">
+			<h3>
+				&nbsp;&nbsp;<script>document.write(province);</script>
+			</h3>
+		</div>
+	</div>
+</div>
+	
+<div class="container">
+	<div class="table">
+		<div class="col-md-12 column">
+				<div id="content">
+						<div id="content-body">
+			
+				<div id="reportTableDiv" class="span10">
+				<table id="reportTable">
+				</table>
+				</div>
+				</div>
+				</div>
+		
+		
+			<script type="text/javascript">
+		var Data1 = [{"user_id":"2919565921","user_author":"-Liu爱秋","user_location":"烟台","user_time":"2017-05-27 16:36:30","user_content":"好久没有更博了，就发张过敏PS的照片吧[二哈]"},{"user_id":"2113930241","user_author":"旷野星辰188","user_location":"潍坊","user_time":"2017-05-27 16:31:49","user_content":"我围观了@唯我落日 的回答，该问题价值50.00元，围观仅1元，快来一起围观~ http://t.cn/RiJMXJr"}];
+		$(function () {
+			$('#reportTable').bootstrapTable({
+				method: 'get',
+				cache: true,      //设置为 false 禁用 AJAX 数据缓存
+				height: 800,
+				striped: false,   //设置为 true 会有隔行变色效果
+				pagination: true, //设置为 true 会在表格底部显示分页条
+				pageSize: 20,     //如果设置了分页，页面数据条数
+				pageNumber:1,    //如果设置了分页，首页页码
+				pageList: [ 20, 50, 100, 200],  //如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
+				search: true,
+				showColumns: true,   //是否显示 内容列下拉框
+				showRefresh: true,   //是否显示 刷新按钮
+				showExport: true,
+				exportTypes: ['csv','txt','xml'],
+				search: true,
+				clickToSelect: true,  //设置true 将在点击行时，自动选择rediobox 和 checkbox
+				columns: [{field:"user_id",title:"id",align:"center",valign:"middle",sortable:"true"},{field:"user_author",title:"author",align:"center",valign:"middle",sortable:"true"},{field:"user_location",title:"location",align:"center",valign:"middle",sortable:"true"},{field:"user_time",title:"time",align:"center",valign:"middle",sortable:"true"},{field:"user_content",title:"content",align:"center",valign:"middle",sortable:"true"}],
+				data : Data1,
+				onPageChange: function (size, number) {
+                },
+                formatNoMatches: function(){
+                	return '无符合条件的记录';
+                }
+			});
+								
+			$(window).resize(function () {
+				$('#reportTable').bootstrapTable('resetView');
+			});
+		});
+		
+	</script>
+		
+		</div>
+	</div>
+</div>
+	
+
+	
+	
+
+
+    <div class="footer-sec"  >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-12 foo-inner" >
+<script>document.write(time1);</script>
+           </div>
+           </div>
+       </div>
+         </div>
+
+
+</body>
+</html>

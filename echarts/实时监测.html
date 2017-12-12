@@ -1,0 +1,789 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SNS内容安全监测系统" />
+    <meta name="author" content="川" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Free Responsive Photography Template</title>
+	<script src="assets/js/jquery-3.2.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/echarts.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script type="text/javascript" src="assets/js/time_js.js"></script>
+	<script type="text/javascript" src="assets/js/scroll.js"></script>
+	<link type="text/css" rel="stylesheet" href="assets/css/time_css.css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet" />
+	
+	
+	
+	  <style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+</style>
+
+    <style>
+
+img {
+  display: block;
+	
+  margin: 0 auto;
+}
+
+canvas {
+	display: block;
+
+	margin:0 auto;
+
+  /* uncomment to test overlay */
+
+  /*
+  position: absolute;
+  left: 0;
+  opacity: .5;
+  top: 0;
+  */  
+
+}
+</style>
+	
+	
+	
+	
+</head>
+<body style="background:#1B1B1B">
+  <div id="header" >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-4 logo-div"  >
+               <div class="logo-inner">
+                   <div class="logo-name">
+                   <a href="index.html"  >
+ <span > SNS内容安全监测系统 </span>
+                   <small >SNS content security monitoring system
+</small>
+                       </a>
+                       </div>
+                   <br />
+                   <div class="links-home">
+                        <a href="实时监测.html"  >实时监测  /</a>
+                    <a href="微博数据分析.html"  >微博数据分析 /</a>
+                    <a href="知乎数据分析.html" >知乎数据分析 /</a>
+                   <a href="数据分析图片.html"  >数据分析图片 </a>
+                   </div>
+                  
+               </div>
+
+           </div>
+           <div class="col-md-8 header-text-top " >
+           <br />     
+实时监测模块可以获取中国各地的新浪微博的动态，检测是否有敏感信息发送。同时，系统会自动获取信息发送者的各类详细信息与关系网络，以暴露非法用户的社交群。 
+<br />Real-time monitoring module can get around China sina weibo dynamic, detect whether there is sensitive information. At the same time, the system will automatically obtain information from all kinds of information and network, to expose the illegal users of a social group.
+
+           </div>
+       </div>
+   </div>
+    </div>   
+    <!--END HEADER SECTION-->
+
+	 
+	 <div class="container">
+
+
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+		<div class="row clearfix">
+		<div class="col-md-9 column">
+			<div id="mainMap" style="height:500px;width: 850px;padding:10px;background:#1B1B1B">
+</div>
+
+<script type="text/javascript">
+	$('#document').ready(function(){
+		 getEcharts();
+	 });
+</script>
+
+<script type="text/javascript">
+		var Data1 = [
+		[{name:'佛山'}, {name:'北京',value:15}],
+		[{name:'沈阳'}, {name:'厦门',value:49}],
+		[{name:'上海'}, {name:'北京',value:62}],
+		[{name:'上海'}, {name:'北京',value:56}],
+		[{name:'西安'}, {name:'上海',value:92}],
+		[{name:'温州'}, {name:'北京',value:40}],
+		[{name:'杭州'}, {name:'杭州',value:37}],
+		[{name:'上海'}, {name:'上海',value:20}],
+		[{name:'常州'}, {name:'深圳',value:19}],
+		[{name:'深圳'}, {name:'武汉',value:42}]
+		];
+		var Data2 = [
+					{name:'佛山',value:15},
+					{name:'沈阳',value:49},
+					{name:'上海',value:62},
+					{name:'上海',value:56},
+					{name:'西安',value:92},
+					{name:'温州',value:40},
+					{name:'杭州',value:37},
+					{name:'上海',value:20},
+					{name:'常州',value:19},
+					{name:'深圳',value:42}
+					];
+function getEcharts(){
+    // Step:3 conifg ECharts's path, link to echarts.js from current page.
+    // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
+    require.config({
+        paths: {
+            echarts: './js'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+    require(
+        [
+            'echarts',
+            'echarts/chart/map'
+        ],
+        function (ec) {
+            // --- 地图 ---
+            var myChart2 = ec.init(document.getElementById('mainMap'));
+            myChart2.setOption({
+				dataRange: {
+					min : 0,
+					max : 100,
+					calculable : true,
+					color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+					textStyle:{
+						color:'#fff'
+					}
+				},
+				tooltip : {
+					trigger: 'item',
+					formatter: '{b}'
+				},//显示详细信息悬浮框
+				toolbox: {
+					show : true,
+					orient : 'vertical',
+					x: 'right',
+					y: 'center',
+					feature : {
+						mark : {show: true},
+						dataView : {show: true, readOnly: false},
+						restore : {show: true},
+						saveAsImage : {show: true}
+					}
+				},
+				series : [
+					{
+						name: '全国',
+						type: 'map',
+						roam: true,
+						hoverable: false,
+						mapType: 'china',
+						selectedMode : 'single',//multiple多选
+						itemStyle:{
+							normal:{
+								borderColor:'rgba(100,149,237,1)',
+								borderWidth:0.5,
+								areaStyle:{
+									color: '#1b1b1b'
+								}
+							}
+						},
+						emphasis:{//鼠标hover样式
+                            label:{
+                                show:true,
+                                textStyle:{
+                                    color:'#fa4f04'
+                                }
+                            }
+                        },
+						data:[],
+						markLine : {
+							smooth:true,
+							symbol: ['none', 'circle'],  
+							symbolSize : 1,
+							itemStyle : {
+								normal: {
+									color:'#fff',
+									borderWidth:1,
+									borderColor:'rgba(30,144,255,0.5)'
+								}
+							},
+							data : [
+							],//不能删
+						},
+						geoCoord: {
+							'上海': [121.4648,31.2891],
+							'东莞': [113.8953,22.901],
+							'东营': [118.7073,37.5513],
+							'中山': [113.4229,22.478],
+							'临汾': [111.4783,36.1615],
+							'临沂': [118.3118,35.2936],
+							'丹东': [124.541,40.4242],
+							'丽水': [119.5642,28.1854],
+							'乌鲁木齐': [87.9236,43.5883],
+							'佛山': [112.8955,23.1097],
+							'保定': [115.0488,39.0948],
+							'兰州': [103.5901,36.3043],
+							'包头': [110.3467,41.4899],
+							'北京': [116.4551,40.2539],
+							'北海': [109.314,21.6211],
+							'南京': [118.8062,31.9208],
+							'南宁': [108.479,23.1152],
+							'南昌': [116.0046,28.6633],
+							'南通': [121.1023,32.1625],
+							'厦门': [118.1689,24.6478],
+							'台州': [121.1353,28.6688],
+							'合肥': [117.29,32.0581],
+							'呼和浩特': [111.4124,40.4901],
+							'咸阳': [108.4131,34.8706],
+							'哈尔滨': [127.9688,45.368],
+							'唐山': [118.4766,39.6826],
+							'嘉兴': [120.9155,30.6354],
+							'大同': [113.7854,39.8035],
+							'大连': [122.2229,39.4409],
+							'天津': [117.4219,39.4189],
+							'太原': [112.3352,37.9413],
+							'威海': [121.9482,37.1393],
+							'宁波': [121.5967,29.6466],
+							'宝鸡': [107.1826,34.3433],
+							'宿迁': [118.5535,33.7775],
+							'常州': [119.4543,31.5582],
+							'广州': [113.5107,23.2196],
+							'廊坊': [116.521,39.0509],
+							'延安': [109.1052,36.4252],
+							'张家口': [115.1477,40.8527],
+							'徐州': [117.5208,34.3268],
+							'德州': [116.6858,37.2107],
+							'惠州': [114.6204,23.1647],
+							'成都': [103.9526,30.7617],
+							'扬州': [119.4653,32.8162],
+							'承德': [117.5757,41.4075],
+							'拉萨': [91.1865,30.1465],
+							'无锡': [120.3442,31.5527],
+							'日照': [119.2786,35.5023],
+							'昆明': [102.9199,25.4663],
+							'杭州': [119.5313,29.8773],
+							'枣庄': [117.323,34.8926],
+							'柳州': [109.3799,24.9774],
+							'株洲': [113.5327,27.0319],
+							'武汉': [114.3896,30.6628],
+							'汕头': [117.1692,23.3405],
+							'江门': [112.6318,22.1484],
+							'沈阳': [123.1238,42.1216],
+							'沧州': [116.8286,38.2104],
+							'河源': [114.917,23.9722],
+							'泉州': [118.3228,25.1147],
+							'泰安': [117.0264,36.0516],
+							'泰州': [120.0586,32.5525],
+							'济南': [117.1582,36.8701],
+							'济宁': [116.8286,35.3375],
+							'海口': [110.3893,19.8516],
+							'淄博': [118.0371,36.6064],
+							'淮安': [118.927,33.4039],
+							'深圳': [114.5435,22.5439],
+							'清远': [112.9175,24.3292],
+							'温州': [120.498,27.8119],
+							'渭南': [109.7864,35.0299],
+							'湖州': [119.8608,30.7782],
+							'湘潭': [112.5439,27.7075],
+							'滨州': [117.8174,37.4963],
+							'潍坊': [119.0918,36.524],
+							'烟台': [120.7397,37.5128],
+							'玉溪': [101.9312,23.8898],
+							'珠海': [113.7305,22.1155],
+							'盐城': [120.2234,33.5577],
+							'盘锦': [121.9482,41.0449],
+							'石家庄': [114.4995,38.1006],
+							'福州': [119.4543,25.9222],
+							'秦皇岛': [119.2126,40.0232],
+							'绍兴': [120.564,29.7565],
+							'聊城': [115.9167,36.4032],
+							'肇庆': [112.1265,23.5822],
+							'舟山': [122.2559,30.2234],
+							'苏州': [120.6519,31.3989],
+							'莱芜': [117.6526,36.2714],
+							'菏泽': [115.6201,35.2057],
+							'营口': [122.4316,40.4297],
+							'葫芦岛': [120.1575,40.578],
+							'衡水': [115.8838,37.7161],
+							'衢州': [118.6853,28.8666],
+							'西宁': [101.4038,36.8207],
+							'西安': [109.1162,34.2004],
+							'贵阳': [106.6992,26.7682],
+							'连云港': [119.1248,34.552],
+							'邢台': [114.8071,37.2821],
+							'邯郸': [114.4775,36.535],
+							'郑州': [113.4668,34.6234],
+							'鄂尔多斯': [108.9734,39.2487],
+							'重庆': [107.7539,30.1904],
+							'金华': [120.0037,29.1028],
+							'铜川': [109.0393,35.1947],
+							'银川': [106.3586,38.1775],
+							'镇江': [119.4763,31.9702],
+							'长春': [125.8154,44.2584],
+							'长沙': [113.0823,28.2568],
+							'长治': [112.8625,36.4746],
+							'阳泉': [113.4778,38.0951],
+							'青岛': [120.4651,36.3373],
+							'韶关': [113.7964,24.7028]
+						}
+					},
+					{
+						name: '北京 Top10',
+						type: 'map',
+						mapType: 'china',
+						data:[],
+						markLine : {
+							smooth:true,
+							effect : {
+								show: true,
+								scaleSize: 1,
+								period: 30,
+								color: '#fff',
+								shadowBlur: 10
+							},
+							selectedMode : 'single',//multiple多选
+							itemStyle : {
+								normal: {
+									label:{show:false},
+									borderWidth:1,  //决定线的宽度
+									lineStyle: {
+										type: 'solid',
+										shadowBlur: 10
+									}
+								}
+							},
+							emphasis:{//鼠标hover样式
+								label:{
+									show:true,
+									textStyle:{
+									color:'#fa4f04'
+									}
+								}
+							},
+							//线的数据
+							data : Data1
+						},
+						markPoint : {
+							symbol:'emptyCircle',
+							symbolSize : function (v){
+							return 10 + v/10
+							},
+							effect : {
+								show: true,
+								shadowBlur : 0
+							},
+							itemStyle:{
+								normal:{
+									label:{show:false}
+								},
+									emphasis: {
+									label:{position:'top'}
+								}
+							},
+							//圈的数据
+							data : Data2
+						}
+					}
+				]
+        });
+		var ecConfig = require('echarts/config');
+        myChart2.on(ecConfig.EVENT.MAP_SELECTED, function (param){
+        var selected = param.selected;
+        var urlArr = ['各省微博数据.html','http://www.baidu.com'];
+                for (var p in selected) {
+                    if (selected[p]) {
+                        switch(p){
+                            case '北京':
+                                location.href = urlArr[0];
+                                break;
+                            case '上海':
+                                location.href = urlArr[0];
+                                break;
+                            case '天津':
+                                location.href = urlArr[0];
+                                break;
+                            case '重庆':
+                                location.href = urlArr[0];
+                                break;
+                            case '黑龙江':
+                                location.href = urlArr[0];
+                                break;
+                            case '吉林':
+                                location.href = urlArr[0];
+                                break;
+                            case '辽宁':
+                                location.href = urlArr[0];
+                                break;
+                            case '内蒙古':
+                                location.href = urlArr[0];
+                                break;
+                            case '河北':
+                                location.href = urlArr[0];
+                                break;
+                            case '新疆':
+                                location.href = urlArr[0];
+                                break;
+                            case '甘肃':
+                                location.href = urlArr[0];
+                                break;
+                            case '陕西':
+                                location.href = urlArr[0];
+                                break;
+                            case '宁夏':
+                                location.href = urlArr[0];
+                                break;
+                            case '河南':
+                                location.href = urlArr[0];
+                                break;
+                            case '山东':
+                                location.href = urlArr[0];
+                                break;
+                            case '山西':
+                                location.href = urlArr[0];
+                                break;
+                            case '安徽':
+                                location.href = urlArr[0];
+                                break;
+                            case '湖北':
+                                location.href = urlArr[0];
+                                break;
+                            case '江苏':
+                                location.href = urlArr[0];
+                                break;								
+                            case '四川':
+                                location.href = urlArr[0];
+                                break;
+                            case '贵州':
+                                location.href = urlArr[0];
+                                break;
+                            case '云南':
+                                location.href = urlArr[0];
+                                break;
+                            case '广西':
+                                location.href = urlArr[0];
+                                break;
+                            case '西藏':
+                                location.href = urlArr[0];
+                                break;
+                            case '浙江':
+                                location.href = urlArr[0];
+                                break;
+                            case '江西':
+                                location.href = urlArr[0];
+                                break;
+                            case '广东':
+                                location.href = urlArr[0];
+                                break;
+                            case '福建':
+                                location.href = urlArr[0];
+                                break;
+                            case '海南':
+                                location.href = urlArr[0];
+                                break;
+                            case '台湾':
+                                location.href = urlArr[0];
+                                break;
+                            case '贵州':
+                                location.href = urlArr[0];
+                                break;	
+                            case '青海':
+                                location.href = urlArr[0];
+                                break;
+                            case '湖南':
+                                location.href = urlArr[0];
+                                break;								
+								default:
+                                break;
+                        }
+
+                    }
+                }
+            });
+	});
+}
+    </script>
+		</div>
+		
+		
+//定义微博相关变量
+	<script>
+	var id1= "5842935428";
+	var author1= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location1= "法国培根";
+	var time1= "法国培根";
+	var content1= "法国培根";
+	var id2= "法国培根";
+	var author2= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location2= "法国培根";
+	var time2= "法国培根";
+	var content2= "法国培根";
+	var id3= "法国培根";
+	var author3= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location3= "法国培根";
+	var time3= "法国培根";
+	var content3= "法国培根";
+	var id4= "法国培根";
+	var author4= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location4= "法国培根";
+	var time4= "法国培根";
+	var content4= "法国培根";
+	var id5= "法国培根";
+	var author5= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location5= "法国培根";
+	var time5= "法国培根";
+	var content5= "法国培根";
+	var id6= "法国培根";
+	var author6= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location6= "法国培根";
+	var time6= "法国培根";
+	var content6= "法国培根";
+	var id7= "法国培根";
+	var author7= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location7= "法国培根";
+	var time7= "法国培根";
+	var content7= "法国培根";
+	var id8= "法国培根";
+	var author8= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location8= "法国培根";
+	var time8= "法国培根";
+	var content8= "法国培根";
+	var id9= "法国培根";
+	var author9= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location9= "法国培根";
+	var time9= "法国培根";
+	var content9= "法国培根";
+	var id10= "法国培根";
+	var author10= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location10= "法国培根";
+	var time10= "法国培根";
+	var content10= "法国培根";
+	var id11= "法国培根";
+	var author11= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location11= "法国培根";
+	var time11= "法国培根";
+	var content11= "法国培根";
+	var id12= "法国培根";
+	var author12= "旅日华人，前职咨询，现创业公司。参与过日本零售、金融、IT等行业项目。主要答题范围：日语/日本政经社/电子产品/设计/东京生活";
+	var location12= "法国培根";
+	var time12= "法国培根";
+	var content12= "法国培根";
+	
+	
+	</script>	
+		
+		
+		
+		<div class="col-md-3 column">
+
+		<canvas id="c"></canvas>
+		<script src="assets/js/index.js"></script>
+				
+			
+		</div>
+	
+		</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h3>
+						<!-- <font color="#1E90FF">&nbsp;&nbsp;&nbsp;&nbsp;微博用户显示</font> -->
+					</h3>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<script type="text/javascript">
+				$(document).ready(function(){
+					$('.list_lh li:even').addClass('lieven');
+				})
+				$(function(){
+					$("div.list_lh").myScroll({
+						speed:150, //数值越大，速度越慢
+						rowHeight:90 //li的高度
+					});
+				});
+				</script>
+				
+				
+				
+				
+
+				
+				
+				
+				
+<div class="box1">
+	<div class="bcon1">
+		<!-- 代码开始 -->
+		<div class="list_lh">
+			<ul>
+				<li> 
+					<p><a href="#" id="link1"><script>document.write(id1);document.getElementById('link1').href = 'http://weibo.com/u/'+id1;</script></a></p>
+					<p><a href="#" id="link11"><script>document.write(author1);document.getElementById('link11').href = 'http://weibo.com/u/'+id1;</script></a><span><script>document.write(time1);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link2"><script>document.write(id2);document.getElementById('link2').href = 'http://weibo.com/u/'+id2;</script></a></p>
+					<p><a href="#" id="link22"><script>document.write(author2);document.getElementById('link22').href = 'http://weibo.com/u/'+id2;</script></a><span><script>document.write(time2);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link3"><script>document.write(id3);document.getElementById('link3').href = 'http://weibo.com/u/'+id3;</script></a></p>
+					<p><a href="#" id="link33"><script>document.write(author3);document.getElementById('link33').href = 'http://weibo.com/u/'+id3;</script></a><span><script>document.write(time3);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link4"><script>document.write(id4);document.getElementById('link4').href = 'http://weibo.com/u/'+id4;</script></a></p>
+					<p><a href="#" id="link44"><script>document.write(author4);document.getElementById('link44').href = 'http://weibo.com/u/'+id4;</script></a><span><script>document.write(time4);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link5"><script>document.write(id5);document.getElementById('link5').href = 'http://weibo.com/u/'+id5;</script></a></p>
+					<p><a href="#" id="link55"><script>document.write(author5);document.getElementById('link55').href = 'http://weibo.com/u/'+id5;</script></a><span><script>document.write(time5);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link6"><script>document.write(id6);document.getElementById('link6').href = 'http://weibo.com/u/'+id6;</script></a></p>
+					<p><a href="#" id="link66"><script>document.write(author6);document.getElementById('link66').href = 'http://weibo.com/u/'+id6;</script></a><span><script>document.write(time6);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link7"><script>document.write(id7);document.getElementById('link7').href = 'http://weibo.com/u/'+id7;</script></a></p>
+					<p><a href="#" id="link77"><script>document.write(author7);document.getElementById('link77').href = 'http://weibo.com/u/'+id7;</script></a><span><script>document.write(time7);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link8"><script>document.write(id8);document.getElementById('link8').href = 'http://weibo.com/u/'+id8;</script></a></p>
+					<p><a href="#" id="link88"><script>document.write(author8);document.getElementById('link88').href = 'http://weibo.com/u/'+id8;</script></a><span><script>document.write(time8);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link9"><script>document.write(id9);document.getElementById('link9').href = 'http://weibo.com/u/'+id9;</script></a></p>
+					<p><a href="#" id="link99"><script>document.write(author9);document.getElementById('link99').href = 'http://weibo.com/u/'+id9;</script></a><span><script>document.write(time9);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link10"><script>document.write(id10);document.getElementById('link10').href = 'http://weibo.com/u/'+id10;</script></a></p>
+					<p><a href="#" id="link100"><script>document.write(author10);document.getElementById('link100').href = 'http://weibo.com/u/'+id10;</script></a><span><script>document.write(time10);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link11"><script>document.write(id11);document.getElementById('link11').href = 'http://weibo.com/u/'+id11;</script></a></p>
+					<p><a href="#" id="link110"><script>document.write(author11);document.getElementById('link110').href = 'http://weibo.com/u/'+id11;</script></a><span><script>document.write(time11);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link12"><script>document.write(id12);document.getElementById('link12').href = 'http://weibo.com/u/'+id12;</script></a></p>
+					<p><a href="#" id="link120"><script>document.write(author12);document.getElementById('link120').href = 'http://weibo.com/u/'+id12;</script></a><span><script>document.write(time12);</script></span></p>
+				</li>
+			</ul>
+		</div>
+		<!-- 代码结束 -->
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h3>
+					<!--	<font color="#1E90FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微博文本显示</font>-->
+					</h3>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				
+				<script type="text/javascript">
+				$(document).ready(function(){
+					$('.list_lh li:even').addClass('lieven');
+				})
+				$(function(){
+					$("div.list_lh").myScroll({
+						speed:150, //数值越大，速度越慢
+						rowHeight:90 //li的高度
+					});
+				});
+				</script>
+<div class="box">
+	<div class="bcon">
+		<!-- 代码开始 -->
+		<div class="list_lh">
+			<ul>
+				<li>
+					<p><a href="#" id="link111"><script>document.write(location1);document.getElementById('link111').href = 'http://weibo.com/u/'+id1;</script></a></p>
+					<p><a href="#" id="link1111"><script>document.write(content1);document.getElementById('link1111').href = 'http://weibo.com/u/'+id1;</script></a><span><script>document.write(time1);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link222"><script>document.write(location2);document.getElementById('link222').href = 'http://weibo.com/u/'+id2;</script></a></p>
+					<p><a href="#" id="link2222"><script>document.write(content2);document.getElementById('link2222').href = 'http://weibo.com/u/'+id2;</script></a><span><script>document.write(time2);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link333"><script>document.write(location3);document.getElementById('link333').href = 'http://weibo.com/u/'+id3;</script></a></p>
+					<p><a href="#" id="link3333"><script>document.write(content3);document.getElementById('link3333').href = 'http://weibo.com/u/'+id3;</script></a><span><script>document.write(time3);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link444"><script>document.write(location4);document.getElementById('link444').href = 'http://weibo.com/u/'+id4;</script></a></p>
+					<p><a href="#" id="link4444"><script>document.write(content4);document.getElementById('link4444').href = 'http://weibo.com/u/'+id4;</script></a><span><script>document.write(time4);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link555"><script>document.write(location5);document.getElementById('link555').href = 'http://weibo.com/u/'+id5;</script></a></p>
+					<p><a href="#" id="link5555"><script>document.write(content5);document.getElementById('link5555').href = 'http://weibo.com/u/'+id5;</script></a><span><script>document.write(time5);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link666"><script>document.write(location6);document.getElementById('link666').href = 'http://weibo.com/u/'+id6;</script></a></p>
+					<p><a href="#" id="link6666"><script>document.write(content6);document.getElementById('link6666').href = 'http://weibo.com/u/'+id6;</script></a><span><script>document.write(time6);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link777"><script>document.write(location7);document.getElementById('link777').href = 'http://weibo.com/u/'+id7;</script></a></p>
+					<p><a href="#" id="link7777"><script>document.write(content7);document.getElementById('link7777').href = 'http://weibo.com/u/'+id7;</script></a><span><script>document.write(time7);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link888"><script>document.write(location8);document.getElementById('link888').href = 'http://weibo.com/u/'+id8;</script></a></p>
+					<<p><a href="#" id="link8888"><script>document.write(content8);document.getElementById('link8888').href = 'http://weibo.com/u/'+id8;</script></a><span><script>document.write(time8);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link999"><script>document.write(location9);document.getElementById('link999').href = 'http://weibo.com/u/'+id9;</script></a></p>
+					<p><a href="#" id="link9999"><script>document.write(content9);document.getElementById('link9999').href = 'http://weibo.com/u/'+id9;</script></a><span><script>document.write(time9);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link1000"><script>document.write(location10);document.getElementById('link1000').href = 'http://weibo.com/u/'+id10;</script></a></p>
+					<p><a href="#" id="link10000"><script>document.write(content10);document.getElementById('link10000').href = 'http://weibo.com/u/'+id10;</script></a><span><script>document.write(time10);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link1100"><script>document.write(location11);document.getElementById('link1100').href = 'http://weibo.com/u/'+id11;</script></a></p>
+					<p><a href="#" id="link11000"><script>document.write(content11);document.getElementById('link11000').href = 'http://weibo.com/u/'+id11;</script></a><span><script>document.write(time11);</script></span></p>
+				</li>
+				<li>
+					<p><a href="#" id="link1200"><script>document.write(location12);document.getElementById('link1200').href = 'http://weibo.com/u/'+id12;</script></a></p>
+					<p><a href="#" id="link12000"><script>document.write(content12);document.getElementById('link12000').href = 'http://weibo.com/u/'+id12;</script></a><span><script>document.write(time12);</script></span></p>
+				</li>
+			</ul>
+		</div>
+		<!-- 代码结束 -->
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+    <div class="footer-sec"  >
+        <div class="container" >
+       <div class="row">
+           <div class="col-md-12 foo-inner" >
+ <script>document.write(time1);</script> 
+           </div>
+           </div>
+       </div>
+         </div>
+
+</body>
+</html>
