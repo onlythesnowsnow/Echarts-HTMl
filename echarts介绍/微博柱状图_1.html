@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+	<script type="text/javascript" src="jquery-1.8.0.js"></script> 
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:800px;"></div>
+    <script type="text/javascript">
+	
+	var data1 = ['山西','山东','河南','河北','湖南','湖北','广东','广西','安徽','福建','北京','上海'];
+	var data2 = [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3];
+	var data3 = [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3];
+	var data4 = [                    {name : '最高', value : 182.2, xAxis: 7, yAxis: 183},
+                    {name : '最低', value : 2.3, xAxis: 11, yAxis: 3}];
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+		myChart.showLoading();
+		myChart.hideLoading();
+        // 指定图表的配置项和数据
+option = {
+    title : {
+        text: '重点省市微博监测量及敏感微博量'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['微博量','敏感量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : data1
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'微博量',
+            type:'bar',
+            data:data2,
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '各省平均值'}
+                ]
+            }
+        },
+        {
+            name:'敏感量',
+            type:'bar',
+            data:data3,
+            markPoint : {
+                data : data4
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name : '各省平均值'}
+                ]
+            }
+        }
+    ]
+};
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

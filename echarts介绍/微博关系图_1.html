@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+	<script type="text/javascript" src="jquery-1.8.0.js"></script> 
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:800px;"></div>
+    <script type="text/javascript">
+	var data1 = [        {  
+            "name": "淤然丫头",//关系网名称  
+            "keyword": {},  
+            "base": "淤然丫头"  
+        }  ,
+		        {  
+            "name": "momokome明远善",//关系网名称  
+            "keyword": {},  
+            "base": "momokome明远善"  
+        },
+				        {  
+            "name": "二次元桃偃",//关系网名称  
+            "keyword": {},  
+            "base": "二次元桃偃"  
+        }
+		
+		];
+	var data2 = [        {  
+            "name": "淤然丫头",//节点名称  
+            "value": 100, 
+            "category": 0//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "李新忠MTNS",  
+              "value": 10, 
+            "category": 0  
+        },  
+        {  
+            "name": "幻想曲2010",  
+            "value": 10, 
+            "category": 0  
+        },
+		        {  
+            "name": "小兽201409",  
+            "value": 15, 
+            "category": 0  
+        },
+		        {  
+            "name": "少年朕要淡定",  
+            "value": 10, 
+            "category": 0  
+        },
+		        {  
+            "name": "90后的晓庆6666688",  
+            "value": 100, 
+            "category": 0  
+        },
+		        {  
+            "name": "姑姑是过儿啊",  
+            "value": 17, 
+            "category": 0  
+        },
+				        {  
+            "name": "kaloo1981_392",  
+            "value": 21, 
+            "category": 0  
+        },
+				        {  
+            "name": "某某hom",  
+            "value": 54, 
+            "category": 0  
+        },
+				        {  
+            "name": "优位停车车牌识别",  
+            "value": 20, 
+            "category": 0  
+        },
+		{
+		    "name": "犀利哥呼延叔盛胞鞠",  
+            "value": 60, 
+            "category": 0  
+        },{  
+            "name": "momokome明远善",//节点名称  
+            "value": 100, 
+            "category": 1//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "朿竹2012",  
+              "value": 42, 
+            "category": 1  
+        },  
+        {  
+            "name": "世界里的祺365",  
+            "value": 20, 
+            "category": 1  
+        },
+		        {  
+            "name": "璐非露201606",  
+            "value": 32 ,
+            "category": 1  
+        },
+		        {  
+            "name": "嘎哈GAHA",  
+            "value": 15, 
+            "category": 1  
+        },
+		        {  
+            "name": "被占据的幸福201607",  
+            "value":10,
+            "category": 1  
+        },
+		        {  
+            "name": "TR0Y1994",  
+            "value": 54, 
+            "category": 1  
+        },
+				        {  
+            "name": "雅思GRE托福GMAT网络课程团购",  
+            "value": 47, 
+            "category": 1 
+        },
+				        {  
+            "name": "赠友人三首918",  
+            "value": 45, 
+            "category": 1 
+        },
+				        {  
+            "name": "lllllyz哲",  
+            "value": 20, 
+            "category": 1  
+        },
+		{
+		    "name": "ACGS漫展策划官博",  
+            "value": 12, 
+            "category": 1  
+        },{  
+            "name": "二次元桃偃",//节点名称  
+            "value": 100, 
+            "category": 2//与关系网类别索引对应，此处只有一个关系网所以这里写0  
+        },  
+        {  
+            "name": "Leslie和爱吃面的铃铛",  
+              "value": 42, 
+            "category": 2  
+        },  
+        {  
+            "name": "Bowllo_",  
+            "value": 35, 
+            "category": 2  
+        },
+		        {  
+            "name": "北海迷路青年旅舍",  
+            "value": 37, 
+            "category": 2  
+        },
+		        {  
+            "name": "鵬_SAMA",  
+            "value": 50, 
+            "category": 2  
+        },
+		        {  
+            "name": "面面夏呀",  
+            "value": 70, 
+            "category": 2  
+        },
+		        {  
+            "name": "烟檯无痕接发",  
+            "value": 15, 
+            "category": 2  
+        },
+				        {  
+            "name": "Amseram",  
+            "value": 21, 
+            "category": 2
+        },
+				        {  
+            "name": "金牌护肤导师筱雨",  
+            "value": 10, 
+            "category": 2 
+        },
+				        {  
+            "name": "住二楼的小仙女丹姐姐",  
+            "value": 20, 
+            "category": 2  
+        },
+		{
+		    "name": "Maybe201003",  
+            "value": 20, 
+            "category": 2  
+        }];	
+	var data3 = [        {  
+            "source": 0,//起始节点，0表示第一个节点  
+            "target": 1 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 0,  
+            "target": 2  
+        },
+		        {  
+            "source": 0,
+            "target": 3 
+        }, 
+		        {  
+            "source": 0,  
+            "target": 4  
+        },		        {  
+            "source": 0,
+            "target": 5 
+        }, 		        {  
+            "source": 0,
+            "target": 6 
+        }, 		        {  
+            "source": 0,
+            "target": 7 
+        }, 		        {  
+            "source": 0,
+            "target": 8 
+        }, 		        {  
+            "source": 0,
+            "target": 9 
+        },{  
+            "source": 0,
+            "target": 10 
+        },	{  
+            "source": 11,//起始节点，0表示第一个节点  
+            "target": 12 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 11,  
+            "target": 13  
+        },
+		        {  
+            "source": 11,
+            "target": 14 
+        }, 
+		        {  
+            "source": 11,  
+            "target": 15  
+        },		        {  
+            "source": 11,
+            "target": 16 
+        }, 		        {  
+            "source": 11,
+            "target": 17 
+        }, 		        {  
+            "source": 11,
+            "target": 18 
+        }, 		        {  
+            "source": 11,
+            "target": 19 
+        }, 		        {  
+            "source": 11,
+            "target": 20 
+        },{  
+            "source": 11,
+            "target": 21 
+        },{  
+            "source": 22,//起始节点，0表示第一个节点  
+            "target": 23 //目标节点，1表示与索引为1的节点进行连接  
+        },  
+        {  
+            "source": 22,  
+            "target": 24  
+        },
+		        {  
+            "source": 22,
+            "target": 25 
+        }, 
+		        {  
+            "source": 22,  
+            "target": 26  
+        },		        {  
+            "source": 22,
+            "target": 27
+        }, 		        {  
+            "source": 22,
+            "target": 28 
+        }, 		        {  
+            "source": 22,
+            "target": 29 
+        }, 		        {  
+            "source": 22,
+            "target": 30 
+        }, 		        {  
+            "source": 22,
+            "target": 31 
+        }];
+		var data4 = ['淤然丫头','momokome明远善','二次元桃偃']
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+		myChart.showLoading();
+		var webkitDep = {  
+    "type": "force",  
+    "categories": data1,  
+    "nodes": data2,  
+	"links": data3
+};  
+		myChart.hideLoading();
+        // 指定图表的配置项和数据
+        var option = {
+        legend: {  
+            data: data4//此处的数据必须和关系网类别中name相对应 
+				
+        },  
+        series: [{  
+            type: 'graph',  
+            layout: 'circular', 
+			                circular: {
+                    rotateLabel: true
+                },
+            animation: false,
+			roam: true,
+            label: {  
+                normal: {  
+                    show:true,  
+                    position: 'right'  
+                }  
+            },  
+			                lineStyle: {
+                    normal: {
+                        color: 'source',
+                        curveness: 0.3
+                    }
+                },
+            draggable: true,  
+            data: webkitDep.nodes.map(function (node, idx) {  
+                node.id = idx; 
+				node.symbolSize /= 2;
+				node.symbolSize = node.value;
+				node.label = { normal: {
+									show: node.symbolSize >0
+									}};
+                return node;  
+            }),  
+            categories: webkitDep.categories,  
+
+            edges: webkitDep.links  
+        }]  
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
